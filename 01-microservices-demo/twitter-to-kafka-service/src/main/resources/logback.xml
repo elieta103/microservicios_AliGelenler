@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!--Variables para las rutas de los logs-->
-    <property name="DEV_HOME" value="./twitter-to-kafka-microservice/logs"/>
-    <property name="APP_NAME" value="twitter-to-kafka-microservice"/>
+    <property name="DEV_HOME" value="./twitter-to-kafka-service/logs"/>
+    <property name="APP_NAME" value="twitter-to-kafka-service"/>
 
     <!-- Primer appener, lo manda a la consola-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">

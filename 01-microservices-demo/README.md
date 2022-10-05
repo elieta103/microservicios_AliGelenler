@@ -1,9 +1,14 @@
 # Running the application
 - 01 Contiene la implementacion Mock de la conexión con Twiter
-- Corregi la version deprecated del webClient, para verificar el Schema-Registry, mediante una llamada Rest.
+- Corregída la version deprecated del webClient, para verificar el Schema-Registry, mediante una llamada Rest.
+- Creación de la imagen docker del microservicio, twitter-to-kafka-service 
 - Para Iniciar la applicacion :
+-  ...\01-microservices-demo> mvn clean install -DskipTests
 - docker system prune
-- docker-compose -f common.yml -f kafka_cluster.yml up
+- docker-compose -f common.yml -f kafka_cluster.yml -f services.yml up
+- Como esta definida la variable COMPOSE_FILE, en el archivo .env, se puede usar :
+- ...\docker-compose> docker-compose up
+
 - docker pull confluentinc/cp-kafkacat
 - docker run -it --network=host confluentinc/cp-kafkacat kafkacat -L -b localhost:19092
 

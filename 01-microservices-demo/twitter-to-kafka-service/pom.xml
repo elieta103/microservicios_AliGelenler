@@ -74,9 +74,28 @@
             <plugin> <!--Make it runnable, start the app, create build info, create docker images -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration> <!-- Generar la imagen docker  del Microservicio -->
+                    <image><!-- Nombre de los paquetes base : com.microservices.demo.twitter.to.kafka.service-->
+                        <name>${project.groupId}/twitter.to.kafka.service:${project.version}</name>
+                    </image>
+                </configuration>
+                <executions>
+                    <!--
+                    En la creacion de la imagen docker con el plugin de spring, previene 2 overheads
+                    Layered approach:
+                    1. Prevents single fat jar
+                    2. Use caching during image update
+                    Use Cloud Native Buildpacks  buildpacks.io
+                    -->
+                    <execution>
+                        <phase>install</phase>
+                        <goals><!--Crea la imagen docker al correr : mvn clean install -->
+                            <goal>build-image</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
 
 </project>
